@@ -16,8 +16,16 @@ docker run -d --privileged=true --name centos7-apache -p 80:80 -v /var/docker-vo
 ```
 
 docker-compose で使う際も、privileged: true の指定を忘れずに入れてください。
-
 document_root は /var/www/html です。
+
+systemdが動きますので、Apacheの（リロード|リスタート）は
+
+```
+docker exec -it centos7-apache systemctl (reload|restart) httpd.service
+```
+
+です。
+
 
 ## License
 MIT
